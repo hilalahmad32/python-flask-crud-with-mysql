@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="container my-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-6 col-xl-6 col-md-8 col-sm-12">
+            {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category , message in messages %}
+            <div class="alert alert-{{category}}">
+                <strong>{{message}}</strong>
+            </div>
+            {%endfor%}
+            {% endif %}
+            {% endwith %}
+            <a href="/" class="btn btn-secondary my-2">Go Back</a>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Create products</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Enter the Title</label>
+                            <input type="text" class="form-control" name="title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Password</label>
+                            <textarea name="content" id="" cols="30" rows="3" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Enter the Price</label>
+                            <input type="number" class="form-control" name="price">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
